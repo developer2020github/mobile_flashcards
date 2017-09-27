@@ -27,5 +27,16 @@ export const Decks = {
                 isCorrect: true
             }
         ]
+    }, 
+
+    Python: {
+        title: 'Python',
+        questions: [
+            {
+                question: 'Is Python cool?',
+                answer: 'It is!', 
+                isCorrect: true
+            }
+        ]
     }
 }

@@ -2,12 +2,18 @@
 //add a new one
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Decks } from "../utils/Decks"
+import { listOfObjectsToArray } from "../utils/lib"
+import DeckItem from "./DeckItem"
 
 export default class MainView extends React.Component {
   render() {
+    let listOfDecks = listOfObjectsToArray(Decks)
+    //
     return (
       <View style={styles.container}>
         <Text>Main view</Text>
+        {listOfDecks.map((deck)=>{return <DeckItem deck={deck}/>})}
       </View>
     );
   }
