@@ -38,5 +38,27 @@ export const Decks = {
                 isCorrect: true
             }
         ]
+    }, 
+
+    Java: {
+        title: 'Java',
+        questions: [
+            {
+                question: 'Is Java cool?',
+                answer: 'It is!', 
+                isCorrect: true
+            }
+        ]
+    }, 
+
+    Beer: {
+        title: 'Beer',
+        questions: [
+            {
+                question: 'Is Beer cool?',
+                answer: 'It is!', 
+                isCorrect: true
+            }
+        ]
     }
 }

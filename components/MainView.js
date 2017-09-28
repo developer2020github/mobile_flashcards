@@ -20,7 +20,6 @@ export default class MainView extends React.Component {
         <Text>Main view</Text>
         <AddNewDeck onPress={this.addNewDeckPress}/>
         {listOfDecks.map((deck, index)=>{return <DeckItem deck={deck} key={index}/>})}
-        
 
       </View>
     );
