@@ -13,7 +13,7 @@ export default class MainView extends React.Component {
     return (
       <View style={styles.container}>
         <Text>Main view</Text>
-        {listOfDecks.map((deck)=>{return <DeckItem deck={deck}/>})}
+        {listOfDecks.map((deck, index)=>{return <DeckItem deck={deck} key={index}/>})}
       </View>
     );
   }
