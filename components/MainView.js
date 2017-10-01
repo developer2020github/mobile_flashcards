@@ -6,6 +6,8 @@ import { Decks } from "../utils/Decks"
 import { listOfObjectsToArray } from "../utils/lib"
 import DeckItem from "./DeckItem"
 import AddNewDeck from "./AddNewDeck"
+import * as api from "../utils/api"
+
 //{listOfDecks.map((deck, index)=>{return <DeckItem deck={deck} key={index}/>})}
 
 export default class MainView extends React.Component {
@@ -14,8 +16,12 @@ export default class MainView extends React.Component {
   }
 
   renderDeck = ({item}) =>{
-    //return   <Text>{item.title}</Text>
+    //return   <Text>{item.tite}</Text>
     return <DeckItem deck={item} />
+ }
+
+ componentDidMount(){
+   console.log("component just mounted!")
  }
  
   render() {
