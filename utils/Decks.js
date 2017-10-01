@@ -1,7 +1,7 @@
 //This file contains hard-coded definition of initial decks to be loaded,
 //for initial testing and development puproses
 
-export const Decks = {
+export const newDeck = {
     React: {
         title: 'React',
         questions: [
@@ -17,7 +17,10 @@ export const Decks = {
             }
         ]
     },
+}
 
+export const Decks = {
+    
     JavaScript: {
         title: 'JavaScript',
         questions: [

@@ -17,6 +17,15 @@ export function RemoveDeck(deckTitle){
         AsyncStorage.setItem(MOBILE_FLASHCARDS_DESKS_STORAGE_KEY, JSON.stringify(data))
       })
 
+} 
+
+export function removeAllDecks(){
+    //remove all application data from the local storage
+    let keys = [MOBILE_FLASHCARDS_DESKS_STORAGE_KEY];
+    AsyncStorage.multiRemove(keys, (err) => {
+       console.log(" delete error");
+       console.log(err);
+    });
 }
 
 export function getDeck(deckTitle, action){
