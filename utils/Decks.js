@@ -1,6 +1,10 @@
 //This file contains hard-coded definition of initial decks to be loaded,
 //for initial testing and development puproses
 
+import * as api from "./api" 
+import * as lib from "./lib" 
+
+
 //sample new deck object to test interaction with async storage
 export const newDeck = {
     
@@ -19,6 +23,8 @@ export const newDeck = {
         ]
     
 }
+
+
 
 export const Decks = {
     
@@ -65,4 +71,13 @@ export const Decks = {
             }
         ]
     }
+}
+
+//this function will populate local storage on load to have it non-empty
+
+export function populateLocalStorage(){
+   const listOfDecks = lib.listOfObjectsToArray(Decks)
+   for (let deck of listOfDecks) {
+    api.AddDeck(deck)
+  }
 }

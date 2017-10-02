@@ -12,6 +12,10 @@ import * as api from "../utils/api"
 //{listOfDecks.map((deck, index)=>{return <DeckItem deck={deck} key={index}/>})}
 
 export default class MainView extends React.Component {
+  state = {
+    decks : {}
+  }
+
   addNewDeckPress = () =>{
    console.log(" adding new deck")
    api.AddDeck(newDeck)
@@ -28,18 +32,23 @@ export default class MainView extends React.Component {
  }
 
  componentDidMount(){
-   console.log("component just mounted!")
+   
+   //console.log("component just mounted!")
    const decksPromise = api.getAllDecks(); 
    decksPromise.then((results) => {
     const data = JSON.parse(results)
-    console.log("data from storage")
-    console.log(data)
+    //console.log("data from storage")
+    //console.log(data)
+    this.setState({decks: data})
     
   })
+
  }
  
   render() {
-    let listOfDecks = listOfObjectsToArray(Decks)
+    let listOfDecks = listOfObjectsToArray(this.state.decks)
+    //console.log("state from render")
+    //console.log(this.state)
     //
     return (
       <View style={styles.container}>
