@@ -1,8 +1,9 @@
 //This file contains hard-coded definition of initial decks to be loaded,
 //for initial testing and development puproses
 
+//sample new deck object to test interaction with async storage
 export const newDeck = {
-    React: {
+    
         title: 'React',
         questions: [
             {
@@ -16,7 +17,7 @@ export const newDeck = {
                 isCorrect: true 
             }
         ]
-    },
+    
 }
 
 export const Decks = {
