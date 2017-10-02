@@ -6,7 +6,7 @@ export default function AddNewDeck ({ onPress }) {
   return (
     
         <TouchableOpacity onPress={onPress} >
-         <View  style={{flexDirection: "row"}} backgroundColor={"green"}>
+         <View  style={{flexDirection: "row"}} backgroundColor={"green"} height={50}>
           <FontAwesome name='plus' size={18} color={'black'} /> 
           <Text>Add new deck</Text>
           </View>

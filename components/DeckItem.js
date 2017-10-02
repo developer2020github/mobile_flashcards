@@ -15,8 +15,15 @@ export default class DeckItem extends React.Component {
 const styles = StyleSheet.create({
     deckItem: {
     flex: 1,
-    backgroundColor: '#ccccff',
+    backgroundColor: '#dfdfdf',
     alignItems: 'center',
     justifyContent: 'center',
+    height: 50,
+    margin: 5,
+    borderStyle: 'solid',
+    borderColor: 'black', 
+    borderWidth: 2, 
+    borderRadius: 5, 
+    padding: 9
   },
 });
