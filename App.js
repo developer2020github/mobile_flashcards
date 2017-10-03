@@ -5,7 +5,7 @@ import NewDeckView from "./components/NewDeckView"
 import { populateLocalStorage } from "./utils/Decks"
 
 
-const ShowMainView = true
+//const ShowMainView = true
 //keep this for testing purposes so that local storage is not empty
 populateLocalStorage()
 
@@ -13,11 +13,11 @@ export default class App extends React.Component {
 
   render() {
 
-    if (ShowMainView) {
+  /*  if (ShowMainView) {
       return (
         <MainView />
       )
-    }
+    }*/
     return (
       <NewDeckView />
     )
