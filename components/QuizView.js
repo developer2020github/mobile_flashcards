@@ -7,16 +7,18 @@ import * as colors from "../utils/Colors"
 
 const QUIZ_STATES = {
 	IN_PROGRESS: 'IN_PROGRESS', 
-    COMPLETE: "COMPLETE", 
+    COMPLETE: "COMPLETE"
+}
+
+const QUIZ_VIEW_STATES = { 
     SHOWING_ANSWER: "SHOWING_ANSWER", 
     SHOWING_QUESTION: "SHOWING_QUESTION"
 }
 
-
 export default class DeckView extends Component {
     state = {
-        quizState : QUIZ_STATES.IN_PROGRESS, 
-        quizViewState: QUIZ_STATES.SHOWING_QUESTION,  
+        quizState :    QUIZ_STATES.IN_PROGRESS, 
+        quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION,  
         currentQuestionIdx: 0, 
         numberOfCorrectAnswers: 0, 
         totalNumberOfcards: 0, 
@@ -26,13 +28,18 @@ export default class DeckView extends Component {
 
     componentDidMount(){
         this.setState({totalNumberOfCards: this.props.deck.questions.length, 
-                       quizViewState: QUIZ_STATES.SHOWING_QUESTION
+                       quizState :    QUIZ_STATES.IN_PROGRESS, 
+                       quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION
         })
     }
 
 
   showAnswerPress = ()=>{
-    console.log("show answer pressed")
+    this.setState({quizViewState: QUIZ_VIEW_STATES.SHOWING_ANSWER})
+  }
+  
+  showQuestionPress = ()=>{
+    this.setState({quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION})
   }
 
   correctPress = ()=>{
@@ -43,15 +50,30 @@ export default class DeckView extends Component {
     console.log("incorrect pressed")
   }
 
+  
+
   render() {
 
 
     return (
       <View style={styles.container}>
+        <View>
         <Text style={styles.header2}>{"quiz in progress:"}</Text>
         <Text style={styles.header2}>{this.props.deck.title}</Text>
-        <Text style={styles.header}>{this.props.deck.questions[this.state.currentQuestionIdx].question}</Text>
-        <CommonButton onPress={this.showAnswerPress} text={"Show answer"} btnBackgroundColor={colors.WHITE}/>
+        </View>
+        {this.state.quizViewState===QUIZ_VIEW_STATES.SHOWING_QUESTION
+
+        ? <View style={styles.btnAlign}>
+          <Text style={styles.header}>{this.props.deck.questions[this.state.currentQuestionIdx].question}</Text>
+          <CommonButton onPress={this.showAnswerPress} text={"Show answer"} btnBackgroundColor={colors.WHITE}/>
+          </View>
+
+        :  <View style={styles.btnAlign}>
+          <Text style={styles.header}>{this.props.deck.questions[this.state.currentQuestionIdx].answer}</Text>
+          <CommonButton onPress={this.showQuestionPress} text={"Show question"} btnBackgroundColor={colors.WHITE}/>
+          </View>
+        }  
+
         <CommonButton onPress={this.correctPress} text={"Correct"} btnBackgroundColor={colors.GREEN1}/>
         <CommonButton onPress={this.incorrectPress} text={"Incorrect"} btnBackgroundColor={colors.RED1}/>
 
@@ -69,6 +91,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     marginTop: 100
   },
+
+  btnAlign:{
+    alignItems: 'center'
+  }, 
 
   header: {
     fontSize: 20, 
