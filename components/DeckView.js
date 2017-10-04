@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet } from 'react-native';
 import CommonButton from "./CommonButton"
+import * as colors from "../utils/Colors"
 
 export default class DeckView extends Component {
  
@@ -16,15 +17,15 @@ export default class DeckView extends Component {
 
   render() {
     const numberOfCards = this.props.deck.questions.length
-
+    //console.log(colors)
     return (
       <View style={styles.container}>
         <Text style={styles.header2}>{"Selected deck:"}</Text>
         <Text style={styles.header}>{this.props.deck.title}</Text>
         <Text style={styles.header}>{numberOfCards + " cards"}</Text>
 
-        <CommonButton onPress={this.addNewCardPress} text={"ADD NEW CARD"} btnBackgroundColor="#d0d9e8"/>
-        <CommonButton onPress={this.startQuizPress} text={"START QUIZ"} btnBackgroundColor="#a7ea70"/>
+        <CommonButton onPress={this.addNewCardPress} text={"ADD NEW CARD"} btnBackgroundColor={colors.BLUE1}/>
+        <CommonButton onPress={this.startQuizPress} text={"START QUIZ"} btnBackgroundColor={colors.GREEN1}/>
 
       </View>
     );
