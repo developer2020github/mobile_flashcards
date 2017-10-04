@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MainView from './components/MainView'
 import NewDeckView from "./components/NewDeckView"
-import { populateLocalStorage } from "./utils/Decks"
+import DeckView from "./components/DeckView"
+import { populateLocalStorage, newDeck } from "./utils/Decks"
 
 
 //const ShowMainView = true
@@ -17,9 +18,13 @@ export default class App extends React.Component {
       return (
         <MainView />
       )
-    }*/
+    }
     return (
       <NewDeckView />
+    )
+    */
+    return  (
+      <DeckView deck={newDeck} />
     )
   }
 }
