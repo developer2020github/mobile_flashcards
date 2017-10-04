@@ -1,5 +1,4 @@
 //this component will display a particular deck 
-//this component will handle a view for addition of new deck. 
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet } from 'react-native';
 import CommonButton from "./CommonButton"
