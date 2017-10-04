@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import MainView from './components/MainView'
 import NewDeckView from "./components/NewDeckView"
 import DeckView from "./components/DeckView"
+import QuizView from "./components/QuizView"
 import { populateLocalStorage, newDeck } from "./utils/Decks"
 
 
@@ -22,10 +23,14 @@ export default class App extends React.Component {
     return (
       <NewDeckView />
     )
-    */
+
     return  (
       <DeckView deck={newDeck} />
     )
+		*/
+	return (
+			<QuizView deck={newDeck} />
+		  )
   }
 }
 

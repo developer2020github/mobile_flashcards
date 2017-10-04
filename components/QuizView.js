@@ -1,8 +1,9 @@
-//this will display quiz view 
-/*
+//this component will display quiz view 
+
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet } from 'react-native';
 import CommonButton from "./CommonButton"
+import * as colors from "../utils/Colors"
 
 const QUIZ_STATES = {
 	IN_PROGRESS: 'IN_PROGRESS', 
@@ -34,8 +35,12 @@ export default class DeckView extends Component {
     console.log("show answer pressed")
   }
 
-  addNewCardPress = ()=>{
-    console.log("add new card pressed")
+  correctPress = ()=>{
+    console.log("correct pressed")
+  }
+
+  incorrectPress = ()=>{
+    console.log("incorrect pressed")
   }
 
   render() {
@@ -46,10 +51,9 @@ export default class DeckView extends Component {
         <Text style={styles.header2}>{"quiz in progress:"}</Text>
         <Text style={styles.header2}>{this.props.deck.title}</Text>
         <Text style={styles.header}>{this.props.deck.questions[this.state.currentQuestionIdx].question}</Text>
-        if this 
-        <CommonButton onPress={this.showAnswerPress} text={"Show answer"} btnBackgroundColor="white"/>
-        <CommonButton onPress={this.correctPress} text={"Correct"} btnBackgroundColor="#d0d9e8"/>
-        <CommonButton onPress={this.incorrectPress} text={"Incorrect"} btnBackgroundColor="#a7ea70"/>
+        <CommonButton onPress={this.showAnswerPress} text={"Show answer"} btnBackgroundColor={colors.WHITE}/>
+        <CommonButton onPress={this.correctPress} text={"Correct"} btnBackgroundColor={colors.GREEN1}/>
+        <CommonButton onPress={this.incorrectPress} text={"Incorrect"} btnBackgroundColor={colors.RED1}/>
 
       </View>
     );
@@ -79,4 +83,4 @@ const styles = StyleSheet.create({
     textAlign: "center"
   }
 
-});*/
+});
