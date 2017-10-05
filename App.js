@@ -4,8 +4,9 @@ import MainView from './components/MainView'
 import NewDeckView from "./components/NewDeckView"
 import DeckView from "./components/DeckView"
 import QuizView from "./components/QuizView"
-import { populateLocalStorage, newDeck } from "./utils/Decks"
+import NewCardView from "./components/NewCardView"
 
+import { populateLocalStorage, newDeck } from "./utils/Decks"
 
 //const ShowMainView = true
 //keep this for testing purposes so that local storage is not empty
@@ -27,10 +28,14 @@ export default class App extends React.Component {
     return  (
       <DeckView deck={newDeck} />
     )
-		*/
+		
 	return (
 			<QuizView deck={newDeck} />
-		  )
+  )*/
+   return (
+       <NewCardView deck={newDeck} />
+
+   )
   }
 }
 
