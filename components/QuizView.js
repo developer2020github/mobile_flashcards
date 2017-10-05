@@ -21,16 +21,22 @@ export default class DeckView extends Component {
         quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION,  
         currentQuestionIdx: 0, 
         numberOfCorrectAnswers: 0, 
-        totalNumberOfcards: 0, 
+        totalNumberOfCards: 0
 
       }
+    
+    resetQuiz=()=>{
+        this.setState({totalNumberOfCards: this.props.deck.questions.length, 
+            quizState :    QUIZ_STATES.IN_PROGRESS, 
+            quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION, 
+            currentQuestionIdx: 0, 
+            numberOfCorrectAnswers: 0, 
+    })
 
+    }
 
     componentDidMount(){
-        this.setState({totalNumberOfCards: this.props.deck.questions.length, 
-                       quizState :    QUIZ_STATES.IN_PROGRESS, 
-                       quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION
-        })
+       this.resetQuiz()
     }
 
 
@@ -42,18 +48,30 @@ export default class DeckView extends Component {
     this.setState({quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION})
   }
 
+  advanceQuestion = () =>{   
+    if (this.state.currentQuestionIdx>=(this.state.totalNumberOfCards-1)){
+ 
+      this.setState({quizState :    QUIZ_STATES.COMPLETE})
+    }else{
+      this.setState((prevState, props) => {
+        return {currentQuestionIdx: prevState.currentQuestionIdx + 1};
+      });
+    }
+
+  }
+
   correctPress = ()=>{
-    console.log("correct pressed")
+    this.advanceQuestion()
   }
 
   incorrectPress = ()=>{
-    console.log("incorrect pressed")
+   this.advanceQuestion()
   }
 
   
 
   render() {
-
+    console.log("rendering!")
 
     return (
       <View style={styles.container}>
@@ -77,7 +95,7 @@ export default class DeckView extends Component {
 
         <CommonButton onPress={this.correctPress} text={"Correct"} btnBackgroundColor={colors.GREEN1}/>
         <CommonButton onPress={this.incorrectPress} text={"Incorrect"} btnBackgroundColor={colors.RED1}/>
-
+        <CommonButton onPress={this.resetQuiz} text={"Reset quiz"} btnBackgroundColor={colors.BLUE1}/>
       </View>
     );
   }
