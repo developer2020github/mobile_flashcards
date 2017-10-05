@@ -22,7 +22,6 @@ export default class DeckView extends Component {
         currentQuestionIdx: 0, 
         numberOfCorrectAnswers: 0, 
         totalNumberOfCards: 0
-
       }
     
     resetQuiz=()=>{
@@ -61,6 +60,11 @@ export default class DeckView extends Component {
   }
 
   correctPress = ()=>{
+
+    this.setState((prevState, props) => {
+      return {numberOfCorrectAnswers: prevState.numberOfCorrectAnswers + 1};
+    });
+
     this.advanceQuestion()
   }
 
@@ -71,7 +75,18 @@ export default class DeckView extends Component {
   
 
   render() {
-    console.log("rendering!")
+
+    if (this.state.quizState===QUIZ_STATES.COMPLETE){
+      const persentageOfCorrectAnswers = (this.state.numberOfCorrectAnswers/this.state.totalNumberOfCards)*100
+      return <View style={styles.container}>
+      
+      <Text style={styles.header2}>{this.props.deck.title + " quiz is complete"}</Text>
+
+      <Text style={styles.header}>{"You scored " + persentageOfCorrectAnswers + "%"}</Text>
+      
+      <CommonButton onPress={this.resetQuiz} text={"Reset quiz"} btnBackgroundColor={colors.BLUE1}/>
+    </View>
+    }
 
     return (
       <View style={styles.container}>
