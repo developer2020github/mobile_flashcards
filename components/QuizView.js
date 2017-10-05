@@ -60,6 +60,7 @@ export default class DeckView extends Component {
         <View>
         <Text style={styles.header2}>{"quiz in progress:"}</Text>
         <Text style={styles.header2}>{this.props.deck.title}</Text>
+        <Text style={styles.header2}>{"Question " + (this.state.currentQuestionIdx+1) + "/" + this.state.totalNumberOfCards }</Text>
         </View>
         {this.state.quizViewState===QUIZ_VIEW_STATES.SHOWING_QUESTION
 
