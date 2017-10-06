@@ -20,6 +20,10 @@ export default class MainView extends React.Component {
       this.props.navigation.navigate("NewDeckView"); 
   }
 
+  deckSelectPress =() =>{
+       
+  }
+
   clearAllDecksPress = () =>{
     console.log("clear all decks")
     api.removeAllDecks()
@@ -27,7 +31,7 @@ export default class MainView extends React.Component {
 
   renderDeck = ({item}) =>{
     //return   <Text>{item.tite}</Text>
-    return <DeckItem deck={item} />
+    return <DeckItem deck={item} navigateToDeckView={this.props.navigation.navigate} />
  }
 
  componentDidMount(){

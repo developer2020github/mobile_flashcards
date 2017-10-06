@@ -30,7 +30,10 @@ const MainStackNavigatorRoutesConfig = {
     }, 
 
     DeckView: {
-        screen: DeckView
+        screen: DeckView, 
+        navigationOptions: {
+            title: "Mobile flashcards: Deck"
+          }
     }, 
 
     QuizView: {

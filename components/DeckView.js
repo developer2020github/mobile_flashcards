@@ -15,13 +15,16 @@ export default class DeckView extends Component {
     console.log("add new card pressed")
   }
 
+
   render() {
-    const numberOfCards = this.props.deck.questions.length
-    //console.log(colors)
+      
+    const deck = this.props.navigation.state.params.deck
+    const numberOfCards = deck.questions.length
+    
     return (
       <View style={styles.container}>
         <Text style={styles.header2}>{"Selected deck:"}</Text>
-        <Text style={styles.header}>{this.props.deck.title}</Text>
+        <Text style={styles.header}>{deck.title}</Text>
         <Text style={styles.header}>{numberOfCards + " cards"}</Text>
 
         <CommonButton onPress={this.addNewCardPress} text={"ADD NEW CARD"} btnBackgroundColor={colors.BLUE1}/>

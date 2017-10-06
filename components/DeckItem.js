@@ -4,9 +4,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default class DeckItem extends React.Component {
   deckPressed = ()=>{
-    console.log("deck pressed!")
-    console.log(this.props.deck.title)
-    console.log("")
+    this.props.navigateToDeckView("DeckView", {deck: this.props.deck})
   }
   render() {
     return (
