@@ -54,7 +54,9 @@ export default class DeckView extends Component {
       this.setState({quizState :    QUIZ_STATES.COMPLETE})
     }else{
       this.setState((prevState, props) => {
-        return {currentQuestionIdx: prevState.currentQuestionIdx + 1};
+        return {currentQuestionIdx: prevState.currentQuestionIdx + 1, 
+                quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION 
+               };
       });
     }
 
