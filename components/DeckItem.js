@@ -1,13 +1,18 @@
 //this file handles a deck item view for list of decks in the main view 
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default class DeckItem extends React.Component {
+  deckPressed = ()=>{
+    console.log("deck pressed!")
+    console.log(this.props.deck.title)
+    console.log("")
+  }
   render() {
     return (
-      <View style={styles.deckItem}>
+      <TouchableOpacity style={styles.deckItem} onPress={this.deckPressed}>
         <Text>{this.props.deck.title}</Text>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
