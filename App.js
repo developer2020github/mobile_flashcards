@@ -44,7 +44,10 @@ const MainStackNavigatorRoutesConfig = {
     }, 
 
     NewCardView: {
-        screen: NewCardView
+        screen: NewCardView, 
+        navigationOptions: {
+            title: "Mobile flashcards: New Card"
+          }
     }
 }
 

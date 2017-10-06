@@ -6,13 +6,12 @@ import * as colors from "../utils/Colors"
 
 export default class DeckView extends Component {
  
-    
   startQuizPress = ()=>{
     this.props.navigation.navigate("QuizView", {deck: this.props.navigation.state.params.deck}); 
   }
 
   addNewCardPress = ()=>{
-    console.log("add new card pressed")
+    this.props.navigation.navigate("NewCardView", {deck: this.props.navigation.state.params.deck}); 
   }
 
 

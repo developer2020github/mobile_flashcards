@@ -13,14 +13,17 @@ export default class NewCardView extends Component {
 
   submitNewCardPress = ()=>{
     console.log("create new card pressed")
+    const deck = this.props.navigation.state.params.deck
   }
 
-  render() {
+  render() { 
+    const deck = this.props.navigation.state.params.deck
+
     return (
       <View style={styles.container}>
 
       <Text style={styles.header}>New card</Text>
-      <Text style={styles.header2}>{"Selected deck: " + this.props.deck.title}</Text>
+      <Text style={styles.header2}>{"Selected deck: " + deck.title}</Text>
 
       <View style={styles.textInputView}>
             <Text style={styles.textInputHeader}>Enter question:</Text>
