@@ -6,7 +6,6 @@ import { Decks, newDeck } from "../utils/Decks"
 import { listOfObjectsToArray } from "../utils/lib"
 import DeckItem from "./DeckItem"
 import CommonButton from "./CommonButton"
-import ClearAllDecks from "./ClearAllDecks"
 import * as api from "../utils/api"
 import * as colors from "../utils/Colors"
 
@@ -53,8 +52,7 @@ export default class MainView extends React.Component {
         renderItem={this.renderDeck}
         keyExtractor={item => item.title}
          />
-
-         <ClearAllDecks onPress={this.clearAllDecksPress}/>
+         <CommonButton onPress={this.clearAllDecksPress} text={"Delete all saved decks"} btnBackgroundColor={colors.RED1}/>
       </View>
     );
   }
