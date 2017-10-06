@@ -17,8 +17,7 @@ export default class MainView extends React.Component {
   }
 
   addNewDeckPress = () =>{
-   console.log(" adding new deck")
-   api.AddDeck(newDeck)
+      this.props.navigation.navigate("NewDeckView"); 
   }
 
   clearAllDecksPress = () =>{
