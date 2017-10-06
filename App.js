@@ -15,7 +15,9 @@ populateLocalStorage()
 export default class App extends React.Component {
 
   render() {
-
+    return(
+      <MainView />
+    )
   /*  if (ShowMainView) {
       return (
         <MainView />
@@ -31,11 +33,11 @@ export default class App extends React.Component {
 		
 	return (
 			<QuizView deck={newDeck} />
-  )*/
+  )
    return (
        <NewCardView deck={newDeck} />
 
-   )
+   )*/
   }
 }
 
