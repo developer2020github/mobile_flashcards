@@ -7,9 +7,15 @@ export default class DeckItem extends React.Component {
     this.props.navigateToDeckView("DeckView", {deck: this.props.deck})
   }
   render() {
+    const numberOfCards = this.props.deck.questions.length
+    let cardText = "cards"
+    if (numberOfCards===1){
+        cardText = "card"
+    }
     return (
       <TouchableOpacity style={styles.deckItem} onPress={this.deckPressed}>
-        <Text>{this.props.deck.title}</Text>
+        <Text  style={styles.header}>{this.props.deck.title}</Text>
+        <Text  style={styles.header2}>{numberOfCards + " " + cardText}</Text>
       </TouchableOpacity>
     );
   }
@@ -29,4 +35,15 @@ const styles = StyleSheet.create({
     borderRadius: 5, 
     padding: 9
   },
+   
+  header: {
+    fontSize: 20, 
+    fontWeight: "bold"
+  }, 
+
+  header2: {
+    fontSize: 14, 
+    fontStyle: "italic", 
+    textAlign: "center"
+  }
 });
