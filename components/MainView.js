@@ -5,9 +5,10 @@ import { StyleSheet, Text, View, FlatList} from 'react-native';
 import { Decks, newDeck } from "../utils/Decks"
 import { listOfObjectsToArray } from "../utils/lib"
 import DeckItem from "./DeckItem"
-import AddNewDeck from "./AddNewDeck"
+import CommonButton from "./CommonButton"
 import ClearAllDecks from "./ClearAllDecks"
 import * as api from "../utils/api"
+import * as colors from "../utils/Colors"
 
 //{listOfDecks.map((deck, index)=>{return <DeckItem deck={deck} key={index}/>})}
 
@@ -20,28 +21,21 @@ export default class MainView extends React.Component {
       this.props.navigation.navigate("NewDeckView"); 
   }
 
-  deckSelectPress =() =>{
-       
-  }
-
   clearAllDecksPress = () =>{
-    console.log("clear all decks")
+
     api.removeAllDecks()
   }
 
+
   renderDeck = ({item}) =>{
-    //return   <Text>{item.tite}</Text>
     return <DeckItem deck={item} navigateToDeckView={this.props.navigation.navigate} />
  }
 
+
  componentDidMount(){
-   
-   //console.log("component just mounted!")
-   const decksPromise = api.getAllDecks(); 
-   decksPromise.then((results) => {
+    const decksPromise = api.getAllDecks(); 
+    decksPromise.then((results) => {
     const data = JSON.parse(results)
-    //console.log("data from storage")
-    //console.log(data)
     this.setState({decks: data})
     
   })
@@ -50,14 +44,10 @@ export default class MainView extends React.Component {
  
   render() {
     let listOfDecks = listOfObjectsToArray(this.state.decks)
-    //console.log("state from render")
-    //console.log(this.state)
-    //
+    
     return (
       <View style={styles.container}>
-        <Text>Main view</Text>
-        <AddNewDeck onPress={this.addNewDeckPress}/>
-
+        <CommonButton onPress={this.addNewDeckPress} text={"Add new deck"} btnBackgroundColor={colors.BLUE1}/>
         <FlatList
         data={listOfDecks}
         renderItem={this.renderDeck}
