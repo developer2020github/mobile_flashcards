@@ -15,12 +15,18 @@ populateLocalStorage()
 
 const MainStackNavigatorRoutesConfig = {
     MainView: {
-        screen: MainView
+        screen: MainView, 
+        navigationOptions: {
+          title: "Mobile flashcards"
+        }
         
     }, 
 
     NewDeckView: {
-        screen: NewDeckView
+        screen: NewDeckView, 
+        navigationOptions: {
+            title: "Mobile flashcards: New Deck"
+          }
     }, 
 
     DeckView: {
@@ -38,7 +44,18 @@ const MainStackNavigatorRoutesConfig = {
 
 
 const MainStackNavigatorConfig = {
-    initialRouteName: "MainView"
+    initialRouteName: "MainView", 
+    navigationOptions: {
+        headerTintColor: "white",
+        headerStyle: {
+          backgroundColor: "black", 
+          marginTop: 20, 
+         
+        }, 
+        headerTitleStyle:{
+            fontSize: 15  
+        }
+      }
 }
 
 const AppMainStackNavigator = StackNavigator(MainStackNavigatorRoutesConfig, MainStackNavigatorConfig)
