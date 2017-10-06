@@ -6,9 +6,9 @@ import * as colors from "../utils/Colors"
 
 export default class DeckView extends Component {
  
-
+    
   startQuizPress = ()=>{
-    console.log("Start new quiz pressed")
+    this.props.navigation.navigate("QuizView", {deck: this.props.navigation.state.params.deck}); 
   }
 
   addNewCardPress = ()=>{
@@ -17,7 +17,7 @@ export default class DeckView extends Component {
 
 
   render() {
-      
+
     const deck = this.props.navigation.state.params.deck
     const numberOfCards = deck.questions.length
     

@@ -37,7 +37,10 @@ const MainStackNavigatorRoutesConfig = {
     }, 
 
     QuizView: {
-        screen: QuizView
+        screen: QuizView, 
+        navigationOptions: {
+            title: "Mobile flashcards: Quiz"
+          }
     }, 
 
     NewCardView: {

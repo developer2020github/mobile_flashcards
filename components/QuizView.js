@@ -25,7 +25,8 @@ export default class DeckView extends Component {
       }
     
     resetQuiz=()=>{
-        this.setState({totalNumberOfCards: this.props.deck.questions.length, 
+        const deck = this.props.navigation.state.params.deck; 
+        this.setState({totalNumberOfCards: deck.questions.length, 
             quizState :    QUIZ_STATES.IN_PROGRESS, 
             quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION, 
             currentQuestionIdx: 0, 
@@ -73,14 +74,15 @@ export default class DeckView extends Component {
   }
 
   
-
   render() {
 
+    const deck = this.props.navigation.state.params.deck; 
+    
     if (this.state.quizState===QUIZ_STATES.COMPLETE){
       const persentageOfCorrectAnswers = (this.state.numberOfCorrectAnswers/this.state.totalNumberOfCards)*100
       return <View style={styles.container}>
       
-      <Text style={styles.header2}>{this.props.deck.title + " quiz is complete"}</Text>
+      <Text style={styles.header2}>{deck.title + " quiz is complete"}</Text>
 
       <Text style={styles.header}>{"You scored " + persentageOfCorrectAnswers + "%"}</Text>
       
@@ -92,18 +94,18 @@ export default class DeckView extends Component {
       <View style={styles.container}>
         <View>
         <Text style={styles.header2}>{"quiz in progress:"}</Text>
-        <Text style={styles.header2}>{this.props.deck.title}</Text>
+        <Text style={styles.header2}>{deck.title}</Text>
         <Text style={styles.header2}>{"Question " + (this.state.currentQuestionIdx+1) + "/" + this.state.totalNumberOfCards }</Text>
         </View>
         {this.state.quizViewState===QUIZ_VIEW_STATES.SHOWING_QUESTION
 
         ? <View style={styles.btnAlign}>
-          <Text style={styles.header}>{this.props.deck.questions[this.state.currentQuestionIdx].question}</Text>
+          <Text style={styles.header}>{deck.questions[this.state.currentQuestionIdx].question}</Text>
           <CommonButton onPress={this.showAnswerPress} text={"Show answer"} btnBackgroundColor={colors.WHITE}/>
           </View>
 
         :  <View style={styles.btnAlign}>
-          <Text style={styles.header}>{this.props.deck.questions[this.state.currentQuestionIdx].answer}</Text>
+          <Text style={styles.header}>{deck.questions[this.state.currentQuestionIdx].answer}</Text>
           <CommonButton onPress={this.showQuestionPress} text={"Show question"} btnBackgroundColor={colors.WHITE}/>
           </View>
         }  
