@@ -23,6 +23,11 @@ export default class DeckView extends Component {
 
     const deck = this.props.navigation.state.params.deck
     const numberOfCards = deck.questions.length
+    let startOfQuizButton = <CommonButton onPress={this.startQuizPress} text={"Start quiz"} btnBackgroundColor={colors.GREEN1}/>
+    if (numberOfCards<1){
+        //user should not be able to go into quiz view if there are no questions in the deck yet
+        startOfQuizButton = null
+    }
     const bounceValue = this.state.bounceValue
     Animated.sequence([
         Animated.timing(bounceValue, { duration: 100, toValue: 2.0}),
@@ -38,11 +43,10 @@ export default class DeckView extends Component {
               {deck.title}
         </Animated.Text>
 
-
         <Text style={styles.header}>{numberOfCards + " cards"}</Text>
-
-        <CommonButton onPress={this.addNewCardPress} text={"ADD NEW CARD"} btnBackgroundColor={colors.BLUE1}/>
-        <CommonButton onPress={this.startQuizPress} text={"START QUIZ"} btnBackgroundColor={colors.GREEN1}/>
+        {startOfQuizButton}
+        <CommonButton onPress={this.addNewCardPress} text={"Add a new card"} btnBackgroundColor={colors.BLUE1}/>
+        
 
       </View>
     );
