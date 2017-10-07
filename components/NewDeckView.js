@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet } from 'react-native';
 import CommonButton from "./CommonButton"
+import * as api from "../utils/api"
 
 export default class NewDeckView extends Component {
   constructor(props) {
@@ -16,6 +17,8 @@ export default class NewDeckView extends Component {
         this.setState({displayTitleWarning: true})
     }else{
         this.setState({displayTitleWarning: false})
+        api.addEmptyDeck(this.state.text)
+        this.props.navigation.navigate("MainView") 
     }
 
   }

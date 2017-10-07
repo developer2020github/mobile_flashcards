@@ -1,6 +1,8 @@
 //this file will handle interaction with local storage
-export const MOBILE_FLASHCARDS_DESKS_STORAGE_KEY = "MOBILE_FLASHCARDS_DESKS_STORAGE_KEY"
 import {AsyncStorage} from "react-native"
+
+export const MOBILE_FLASHCARDS_DESKS_STORAGE_KEY = "MOBILE_FLASHCARDS_DESKS_STORAGE_KEY"
+
 
 //adding a new deck; input is a deck object 
 export function AddDeck(deck) {
@@ -18,6 +20,18 @@ export function RemoveDeck(deckTitle){
       })
 
 } 
+
+export function addEmptyDeck(newDeckTitle){
+    //this function will create a new deck (with only a title) and
+    //add it to the list of current decks 
+    let newDeck = {
+        
+            title: newDeckTitle,
+            questions: []
+    }
+
+    AddDeck(newDeck)
+}
 
 export function removeAllDecks(){
     //remove all application data from the local storage
