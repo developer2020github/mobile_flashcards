@@ -6,18 +6,34 @@ import CommonButton from "./CommonButton"
 export default class NewDeckView extends Component {
   constructor(props) {
     super(props);
-    this.state = { text: 'New deck' };
+    this.state = { text: '', 
+                   displayTitleWarning: false };
   }
 
   submitNewDeckPress = ()=>{
-    console.log("Submit new deck pressed")
+    //console.log("Submit new deck pressed")
+    if (this.state.text.trim()===""){
+        this.setState({displayTitleWarning: true})
+    }else{
+        this.setState({displayTitleWarning: false})
+    }
+
   }
 
   render() {
+    let warning = null
+    if (this.state.displayTitleWarning){
+        warning = " * cannot be empty"
+    }
+
     return (
       <View style={styles.container}>
       <Text style={styles.header}>New deck</Text>
-      <Text style={styles.textInputHeader}>Enter new deck title:</Text>
+      <Text style={styles.textInputHeader}>Enter new deck title:
+        <Text style={{color: 'red'}}>
+          {warning}
+        </Text>
+      </Text>
       <TextInput
         style={styles.textInput}
         onChangeText={(text) => this.setState({text})}
