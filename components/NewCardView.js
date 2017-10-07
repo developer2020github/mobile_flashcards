@@ -1,6 +1,6 @@
 //this component will handle addition of a new card to a deck 
 import React, { Component } from 'react';
-import { AppRegistry, TextInput, Text, View , StyleSheet } from 'react-native';
+import { AppRegistry, TextInput, Text, View , StyleSheet, KeyboardAvoidingView  } from 'react-native';
 import CommonButton from "./CommonButton"
 import * as colors from "../utils/Colors"
 
@@ -8,25 +8,56 @@ export default class NewCardView extends Component {
   constructor(props) {
     super(props);
     this.state = { question: '', 
-                   answer: '' };
+                   answer: '', 
+                   displayQuestionWarning: false, 
+                   displayAnswerWarning: false };
   }
 
   submitNewCardPress = ()=>{
     console.log("create new card pressed")
     const deck = this.props.navigation.state.params.deck
+    let inputIsValid = true
+
+    if (this.state.question.trim()===""){
+       this.setState({displayQuestionWarning: true})
+       inputIsValid= false
+    }else{
+       this.setState({displayQuestionWarning: false})
+    }
+
+    if (this.state.answer.trim()===""){
+        this.setState({displayAnswerWarning: true})
+        inputIsValid= false
+     }else{
+        this.setState({displayAnswerWarning: false})
+     }
   }
 
   render() { 
     const deck = this.props.navigation.state.params.deck
+    let questionWarning = null
+    if (this.state.displayQuestionWarning){
+       questionWarning = " * cannot be emtpy"
+    }
+
+    let answerWarning = null
+    if (this.state.displayAnswerWarning){
+        answerWarning = " * cannot be empty "
+    }
 
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container}>
 
       <Text style={styles.header}>New card</Text>
       <Text style={styles.header2}>{"Selected deck: " + deck.title}</Text>
 
       <View style={styles.textInputView}>
-            <Text style={styles.textInputHeader}>Enter question:</Text>
+            <Text style={styles.textInputHeader}>Enter question:
+                <Text style={{color: 'red'}}>
+                     {questionWarning}
+                </Text>
+            </Text>
+
             <TextInput
                 style={styles.textInput}
                 onChangeText={(question) => this.setState({question})}
@@ -35,7 +66,11 @@ export default class NewCardView extends Component {
       </View>
     
       <View style={styles.textInputView}>
-        <Text style={styles.textInputHeader}>Enter correct answer:</Text>
+        <Text style={styles.textInputHeader}>Enter correct answer:
+                <Text style={{color: 'red'}}>
+                     {answerWarning}
+                </Text>
+        </Text>
         <TextInput
             style={styles.textInput}
             onChangeText={(answer) => this.setState({answer})}
@@ -44,7 +79,7 @@ export default class NewCardView extends Component {
       </View>
 
       <CommonButton onPress={this.submitNewCardPress} text={"Create new card"} btnBackgroundColor={colors.BLUE1}/>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -56,7 +91,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'flex-start', 
-    marginTop: 100
   },
 
   header: {
