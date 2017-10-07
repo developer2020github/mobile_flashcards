@@ -8,10 +8,12 @@ import NewCardView from "./components/NewCardView"
 
 import { populateLocalStorage, newDeck } from "./utils/Decks"
 import { StackNavigator } from 'react-navigation'
+import { setLocalNotification } from  "./utils/Notifications"
 
 //const ShowMainView = true
 //keep this for testing purposes so that local storage is not empty
 populateLocalStorage()
+//setLocalNotification()
 
 const MainStackNavigatorRoutesConfig = {
     MainView: {
@@ -70,31 +72,14 @@ const MainStackNavigatorConfig = {
 const AppMainStackNavigator = StackNavigator(MainStackNavigatorRoutesConfig, MainStackNavigatorConfig)
 
 export default class App extends React.Component {
-
+    
+  componentDidMount(){
+    setLocalNotification()
+  }
   render() {
     return(
       <AppMainStackNavigator />
     )
-  /*  if (ShowMainView) {
-      return (
-        <MainView />
-      )
-    }
-    return (
-      <NewDeckView />
-    )
-
-    return  (
-      <DeckView deck={newDeck} />
-    )
-		
-	return (
-			<QuizView deck={newDeck} />
-  )
-   return (
-       <NewCardView deck={newDeck} />
-
-   )*/
   }
 }
 

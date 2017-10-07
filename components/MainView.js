@@ -8,21 +8,41 @@ import DeckItem from "./DeckItem"
 import CommonButton from "./CommonButton"
 import * as api from "../utils/api"
 import * as colors from "../utils/Colors"
+import * as Notifications from "../utils/Notifications"
 
-//{listOfDecks.map((deck, index)=>{return <DeckItem deck={deck} key={index}/>})}
+
+const showNotificationsGUI = false //this flag can be used for debugging local notifications ; 
+                                   //when it is set to TRUE application will show  extra buttons
+                                   //they call notification- related functions directlty
 
 export default class MainView extends React.Component {
   state = {
     decks : {}
   }
 
+
   addNewDeckPress = () =>{
       this.props.navigation.navigate("NewDeckView"); 
   }
 
-  clearAllDecksPress = () =>{
 
+  clearAllDecksPress = () =>{
     api.removeAllDecks()
+  }
+
+
+  activateNotifcationsPress = () =>{
+    Notifications.setLocalNotification()
+  }
+
+
+  clearNotificationsPermissionsPress = () =>{
+    Notifications.clearNoticationPermission()
+  }
+
+
+  clearNotificationsDataPress = ()=>{
+    Notifications.clearLocalNotification()
   }
 
 
@@ -43,6 +63,15 @@ export default class MainView extends React.Component {
  
   render() {
     let listOfDecks = listOfObjectsToArray(this.state.decks)
+    let notificationDebugButtons = null
+    if (showNotificationsGUI) {
+        notificationDebugButtons = 
+            <View>
+                <CommonButton onPress={this.activateNotifcationsPress} text={"Activate daily notifications"} btnBackgroundColor={colors.GREEN1}/>
+                <CommonButton onPress={this.clearNotificationsPermissionsPress} text={"Clear daily notifications permissions"} btnBackgroundColor={colors.RED1}/>
+                <CommonButton onPress={this.clearNotificationsDataPress} text={"Clear all notifications data"} btnBackgroundColor={colors.RED1}/>
+            </View>
+        }
     
     return (
       <View style={styles.container}>
@@ -52,6 +81,7 @@ export default class MainView extends React.Component {
         renderItem={this.renderDeck}
         keyExtractor={item => item.title}
          />
+         {notificationDebugButtons}
          <CommonButton onPress={this.clearAllDecksPress} text={"Delete all saved decks"} btnBackgroundColor={colors.RED1}/>
       </View>
     );

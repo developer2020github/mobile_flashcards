@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet } from 'react-native';
 import CommonButton from "./CommonButton"
 import * as colors from "../utils/Colors"
+import * as Notifications from "../utils/Notifications"
 
 const QUIZ_STATES = {
 	IN_PROGRESS: 'IN_PROGRESS', 
@@ -50,7 +51,7 @@ export default class DeckView extends Component {
 
   advanceQuestion = () =>{   
     if (this.state.currentQuestionIdx>=(this.state.totalNumberOfCards-1)){
- 
+      Notifications.reScheduleNotification()
       this.setState({quizState :    QUIZ_STATES.COMPLETE})
     }else{
       this.setState((prevState, props) => {
@@ -58,6 +59,7 @@ export default class DeckView extends Component {
                 quizViewState: QUIZ_VIEW_STATES.SHOWING_QUESTION 
                };
       });
+      
     }
 
   }
