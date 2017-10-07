@@ -68,17 +68,7 @@ export function addQuestion(deckTitle, questionText, answerText) {
     return AsyncStorage.getItem(MOBILE_FLASHCARDS_DESKS_STORAGE_KEY)
     .then((results) => {
       const data = JSON.parse(results)
-      console.log("data before")
-      console.log(data)
-      console.log("deck title")
-      console.log(deckTitle)
-      console.log(data[deckTitle])
-      console.log(question)
-
       data[deckTitle].questions.push(question)
-
-      console.log("data after")
-      console.log(data)
       AsyncStorage.setItem(MOBILE_FLASHCARDS_DESKS_STORAGE_KEY, JSON.stringify(data))
     })
 

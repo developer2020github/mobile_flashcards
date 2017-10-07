@@ -12,7 +12,7 @@ import { setLocalNotification } from  "./utils/Notifications"
 
 //const ShowMainView = true
 //keep this for testing purposes so that local storage is not empty
-//populateLocalStorage()
+populateLocalStorage()
 //setLocalNotification()
 
 const MainStackNavigatorRoutesConfig = {
