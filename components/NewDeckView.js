@@ -1,6 +1,6 @@
 //this component will handle a view for addition of new deck. 
 import React, { Component } from 'react';
-import { AppRegistry, TextInput, Text, View , StyleSheet } from 'react-native';
+import { AppRegistry, TextInput, Text, View , StyleSheet, Keyboard } from 'react-native';
 import CommonButton from "./CommonButton"
 import * as api from "../utils/api"
 
@@ -18,6 +18,7 @@ export default class NewDeckView extends Component {
     }else{
         this.setState({displayTitleWarning: false})
         api.addEmptyDeck(this.state.text)
+        Keyboard.dismiss()
         this.props.navigation.navigate("MainView") 
     }
 
