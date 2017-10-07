@@ -1,8 +1,9 @@
 //this component will handle addition of a new card to a deck 
 import React, { Component } from 'react';
-import { AppRegistry, TextInput, Text, View , StyleSheet, KeyboardAvoidingView  } from 'react-native';
+import { AppRegistry, TextInput, Text, View , StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native';
 import CommonButton from "./CommonButton"
 import * as colors from "../utils/Colors"
+import * as api from "../utils/api"
 
 export default class NewCardView extends Component {
   constructor(props) {
@@ -14,13 +15,13 @@ export default class NewCardView extends Component {
   }
 
   submitNewCardPress = ()=>{
-    console.log("create new card pressed")
+    //console.log("create new card pressed")
     const deck = this.props.navigation.state.params.deck
     let inputIsValid = true
 
     if (this.state.question.trim()===""){
        this.setState({displayQuestionWarning: true})
-       inputIsValid= false
+       inputIsValid=false
     }else{
        this.setState({displayQuestionWarning: false})
     }
@@ -31,6 +32,13 @@ export default class NewCardView extends Component {
      }else{
         this.setState({displayAnswerWarning: false})
      }
+
+     if (inputIsValid){
+         api.addQuestion(deck.title, this.state.question, this.state.answer)
+         .then(()=>{Keyboard.dismiss()
+                    this.props.navigation.navigate("DeckView",  {deck: deck})})
+     }
+
   }
 
   render() { 

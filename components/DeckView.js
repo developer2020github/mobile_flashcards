@@ -3,25 +3,43 @@ import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet, Animated } from 'react-native';
 import CommonButton from "./CommonButton"
 import * as colors from "../utils/Colors"
+import * as api from "../utils/api"
 
 export default class DeckView extends Component {
 
     state = {
-        bounceValue: new Animated.Value(1)
+        bounceValue: new Animated.Value(1), 
+        deck: null
     }
  
   startQuizPress = ()=>{
-    this.props.navigation.navigate("QuizView", {deck: this.props.navigation.state.params.deck}); 
+    this.props.navigation.navigate("QuizView", {deck: this.state.deck}); 
   }
 
   addNewCardPress = ()=>{
-    this.props.navigation.navigate("NewCardView", {deck: this.props.navigation.state.params.deck}); 
+    this.props.navigation.navigate("NewCardView", {deck: this.state.deck}); 
   }
 
+  componentDidMount(){
+      //syncronize with local storage 
+      const deck = this.props.navigation.state.params.deck
+      let updateDeck = (updatedDeck)=>{
+          this.setState({deck: updatedDeck})
+      }
+
+      api.getDeck(deck.title, updateDeck)
+  }
 
   render() {
 
-    const deck = this.props.navigation.state.params.deck
+    const deck = this.state.deck
+    if (!deck){
+        return (
+            <View style={styles.container}>
+              <Text style={styles.header2}>Loading....</Text>
+            </View>)
+    }
+    
     const numberOfCards = deck.questions.length
     let startOfQuizButton = <CommonButton onPress={this.startQuizPress} text={"Start quiz"} btnBackgroundColor={colors.GREEN1}/>
     if (numberOfCards<1){
@@ -60,7 +78,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center', 
-    marginTop: 100
   },
 
   header: {

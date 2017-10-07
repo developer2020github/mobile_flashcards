@@ -50,6 +50,8 @@ export function getDeck(deckTitle, action){
     .then((results) => {
       const data = JSON.parse(results)
       const deck = data[deckTitle]
+      console.log("get deck")
+      console.log(deck)
       action(deck)
     })
 }
@@ -60,12 +62,23 @@ export function getAllDecks(){
 }
 
 //this functionk adds a new question to an existing deck, identified by deckTitle
-export function AddQuestion(deckTitle, question) {
+export function addQuestion(deckTitle, questionText, answerText) {
+    let question = {question: questionText,
+                    answer: answerText}
     return AsyncStorage.getItem(MOBILE_FLASHCARDS_DESKS_STORAGE_KEY)
     .then((results) => {
       const data = JSON.parse(results)
+      console.log("data before")
+      console.log(data)
+      console.log("deck title")
+      console.log(deckTitle)
+      console.log(data[deckTitle])
+      console.log(question)
 
       data[deckTitle].questions.push(question)
+
+      console.log("data after")
+      console.log(data)
       AsyncStorage.setItem(MOBILE_FLASHCARDS_DESKS_STORAGE_KEY, JSON.stringify(data))
     })
 
