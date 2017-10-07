@@ -1,10 +1,14 @@
 //this component will display a particular deck 
 import React, { Component } from 'react';
-import { AppRegistry, TextInput, Text, View , StyleSheet } from 'react-native';
+import { AppRegistry, TextInput, Text, View , StyleSheet, Animated } from 'react-native';
 import CommonButton from "./CommonButton"
 import * as colors from "../utils/Colors"
 
 export default class DeckView extends Component {
+
+    state = {
+        bounceValue: new Animated.Value(1)
+    }
  
   startQuizPress = ()=>{
     this.props.navigation.navigate("QuizView", {deck: this.props.navigation.state.params.deck}); 
@@ -19,11 +23,22 @@ export default class DeckView extends Component {
 
     const deck = this.props.navigation.state.params.deck
     const numberOfCards = deck.questions.length
-    
+    const bounceValue = this.state.bounceValue
+    Animated.sequence([
+        Animated.timing(bounceValue, { duration: 100, toValue: 2.0}),
+        Animated.timing(bounceValue, { duration: 100, toValue: 1.0}),
+      ]).start()
+
     return (
       <View style={styles.container}>
         <Text style={styles.header2}>{"Selected deck:"}</Text>
-        <Text style={styles.header}>{deck.title}</Text>
+         
+        <Animated.Text
+            style={[styles.header, {transform: [{scale: bounceValue}]}]}>
+              {deck.title}
+        </Animated.Text>
+
+
         <Text style={styles.header}>{numberOfCards + " cards"}</Text>
 
         <CommonButton onPress={this.addNewCardPress} text={"ADD NEW CARD"} btnBackgroundColor={colors.BLUE1}/>

@@ -1,21 +1,30 @@
 //this file handles a deck item view for list of decks in the main view 
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TouchableWithoutFeedback, Animated } from 'react-native';
 
 export default class DeckItem extends React.Component {
+
   deckPressed = ()=>{
-    this.props.navigateToDeckView("DeckView", {deck: this.props.deck})
+    //add some animation 
+        this.props.navigateToDeckView("DeckView", {deck: this.props.deck})
   }
+
+
   render() {
+
     const numberOfCards = this.props.deck.questions.length
     let cardText = "cards"
     if (numberOfCards===1){
         cardText = "card"
     }
+
+
     return (
       <TouchableOpacity style={styles.deckItem} onPress={this.deckPressed}>
-        <Text  style={styles.header}>{this.props.deck.title}</Text>
-        <Text  style={styles.header2}>{numberOfCards + " " + cardText}</Text>
+          
+            <Text  style={styles.header}>{this.props.deck.title}</Text>
+            <Text  style={styles.header2}>{numberOfCards + " " + cardText}</Text>
+           
       </TouchableOpacity>
     );
   }
