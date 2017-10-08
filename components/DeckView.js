@@ -20,6 +20,9 @@ export default class DeckView extends Component {
     this.props.navigation.navigate("NewCardView", {deck: this.state.deck}); 
   }
 
+  backToListOfDecksPress = ()=>{
+    this.props.navigation.navigate("MainView"); 
+  }
   componentDidMount(){
       //syncronize with local storage 
       const deck = this.props.navigation.state.params.deck
@@ -39,7 +42,7 @@ export default class DeckView extends Component {
               <Text style={styles.header2}>Loading....</Text>
             </View>)
     }
-    
+
     const numberOfCards = deck.questions.length
     let startOfQuizButton = <CommonButton onPress={this.startQuizPress} text={"Start quiz"} btnBackgroundColor={colors.GREEN1}/>
     if (numberOfCards<1){
@@ -64,6 +67,7 @@ export default class DeckView extends Component {
         <Text style={styles.header}>{numberOfCards + " cards"}</Text>
         {startOfQuizButton}
         <CommonButton onPress={this.addNewCardPress} text={"Add a new card"} btnBackgroundColor={colors.BLUE1}/>
+        <CommonButton onPress={this.backToListOfDecksPress} text={"Back to list of decks"} btnBackgroundColor={colors.GRAY1}/>
         
 
       </View>

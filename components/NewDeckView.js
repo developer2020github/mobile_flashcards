@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet, Keyboard } from 'react-native';
 import CommonButton from "./CommonButton"
 import * as api from "../utils/api"
+import * as colors from "../utils/Colors"
 
 export default class NewDeckView extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ export default class NewDeckView extends Component {
         onChangeText={(text) => this.setState({text})}
         value={this.state.text}
       />
-      <CommonButton onPress={this.submitNewDeckPress} text={"CREATE A NEW DECK"} btnBackgroundColor="yellow"/>
+      <CommonButton onPress={this.submitNewDeckPress} text={"Create deck"} btnBackgroundColor={colors.BLUE1}/>
       </View>
     );
   }

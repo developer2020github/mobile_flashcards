@@ -73,7 +73,7 @@ export default class MainView extends React.Component {
  }
  
   render() {
-    console.log("MainView render is called!")
+    //console.log("MainView render is called!")
     let listOfDecks = listOfObjectsToArray(this.state.decks)
     let notificationDebugButtons = null
     if (showNotificationsGUI) {
