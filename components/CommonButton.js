@@ -7,11 +7,10 @@ export default function CommonButton ({ onPress, text, btnBackgroundColor }) {
   return (
     
         <TouchableOpacity onPress={onPress} style={[styles.genericBtn, {backgroundColor: btnBackgroundColor}]}>
-         <View  style={{flexDirection: "row"}}>
-          <Text>{text}</Text>
+         <View>
+            <Text style={styles.genericBtnText}>{text}</Text>
           </View>
         </TouchableOpacity>
-      
   )
 }
 
@@ -21,8 +20,14 @@ const styles = StyleSheet.create({
         margin: 9,
         backgroundColor: "green",
         padding: 10,
-        borderRadius: 5
+        borderRadius: 5, 
+        minWidth: 250,
+        alignItems: 'center',
+        justifyContent: 'center',
       },
-
+    
+    genericBtnText: {
+        fontWeight: "bold"
+    }
 
 })

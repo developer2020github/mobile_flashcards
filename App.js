@@ -10,10 +10,9 @@ import { populateLocalStorage, newDeck } from "./utils/Decks"
 import { StackNavigator } from 'react-navigation'
 import { setLocalNotification } from  "./utils/Notifications"
 
-//const ShowMainView = true
-//keep this for testing purposes so that local storage is not empty
-populateLocalStorage()
-//setLocalNotification()
+function onTransitionStartFunction(){
+   //console.log("transition started!")
+}
 
 const MainStackNavigatorRoutesConfig = {
     MainView: {
@@ -51,7 +50,8 @@ const MainStackNavigatorRoutesConfig = {
             title: "Mobile flashcards: New Card"
           }
     }
-}
+}; 
+
 
 
 const MainStackNavigatorConfig = {
@@ -66,7 +66,9 @@ const MainStackNavigatorConfig = {
         headerTitleStyle:{
             fontSize: 15  
         }
-      }
+      }, 
+
+      onTransitionStart:  onTransitionStartFunction
 }
 
 const AppMainStackNavigator = StackNavigator(MainStackNavigatorRoutesConfig, MainStackNavigatorConfig)

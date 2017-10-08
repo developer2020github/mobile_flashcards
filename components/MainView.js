@@ -9,18 +9,25 @@ import CommonButton from "./CommonButton"
 import * as api from "../utils/api"
 import * as colors from "../utils/Colors"
 import * as Notifications from "../utils/Notifications"
+import * as decks from "../utils/Decks"
 
 
-const showNotificationsGUI = false //this flag can be used for debugging local notifications ; 
+const showNotificationsGUI = false //this flag is used for debugging local notifications ; 
                                    //when it is set to TRUE application will show  extra buttons
                                    //they call notification- related functions directlty
 
+const showStorageGUI = true      //this flag is used for showing buttons that directly control 
+                                 //local storage for testing/debugging purposes
+                                 //1. user can clear it 
+                                 //2. user can populate it with some hard-coded pre-defined decks 
 export default class MainView extends React.Component {
   state = {
     decks : {}
   }
 
-
+  mainViewUpdate(){
+      console.log("update main view!")
+  }
   addNewDeckPress = () =>{
       this.props.navigation.navigate("NewDeckView"); 
   }
@@ -44,7 +51,11 @@ export default class MainView extends React.Component {
   clearNotificationsDataPress = ()=>{
     Notifications.clearLocalNotification()
   }
+  
 
+  populateDecksPress = ()=>{
+    decks.populateLocalStorage()
+  }
 
   renderDeck = ({item}) =>{
     return <DeckItem deck={item} navigateToDeckView={this.props.navigation.navigate} />
@@ -62,6 +73,7 @@ export default class MainView extends React.Component {
  }
  
   render() {
+    console.log("MainView render is called!")
     let listOfDecks = listOfObjectsToArray(this.state.decks)
     let notificationDebugButtons = null
     if (showNotificationsGUI) {
@@ -72,6 +84,15 @@ export default class MainView extends React.Component {
                 <CommonButton onPress={this.clearNotificationsDataPress} text={"Clear all notifications data"} btnBackgroundColor={colors.RED1}/>
             </View>
         }
+
+    let localStorageControlGUI  = null 
+    if (showStorageGUI){
+        localStorageControlGUI= 
+        <View>
+            <CommonButton onPress={this.clearAllDecksPress} text={"Delete all saved decks"} btnBackgroundColor={colors.RED1}/>
+            <CommonButton onPress={this.populateDecksPress} text={"Populate with predefined decks"} btnBackgroundColor={colors.GREEN1}/>
+        </View>
+    }
     
     return (
       <View style={styles.container}>
@@ -82,7 +103,7 @@ export default class MainView extends React.Component {
         keyExtractor={item => item.title}
          />
          {notificationDebugButtons}
-         <CommonButton onPress={this.clearAllDecksPress} text={"Delete all saved decks"} btnBackgroundColor={colors.RED1}/>
+         {localStorageControlGUI}
       </View>
     );
   }

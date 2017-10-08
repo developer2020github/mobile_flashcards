@@ -1,11 +1,11 @@
 //this file handles a deck item view for list of decks in the main view 
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TouchableWithoutFeedback, Animated } from 'react-native';
+import * as colors from "../utils/Colors"
 
 export default class DeckItem extends React.Component {
 
   deckPressed = ()=>{
-    //add some animation 
         this.props.navigateToDeckView("DeckView", {deck: this.props.deck})
   }
 
@@ -33,7 +33,7 @@ export default class DeckItem extends React.Component {
 const styles = StyleSheet.create({
     deckItem: {
     flex: 1,
-    backgroundColor: '#dfdfdf',
+    backgroundColor: colors.GRAY2,
     alignItems: 'center',
     justifyContent: 'center',
     height: 50,
@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     borderColor: 'black', 
     borderWidth: 2, 
     borderRadius: 5, 
-    padding: 9
+    padding: 9, 
+    minWidth: 250
   },
    
   header: {
