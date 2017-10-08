@@ -1,5 +1,16 @@
-//this is the main view of the application ; shows list of available decks and an option to 
-//add a new one
+//=======================================================================================
+//Mobile flashcards: a mobile application built with React Native 
+//2017
+//Author:  developer2020 
+//e-mail:  dev276236@gmail.com
+//=======================================================================================
+
+//========================================================================================
+//This component displays the main view of the application: list of 
+//decks to select from and a button to add new deck. 
+//There are also several optional buttons to help with debugging and testing; 
+//the can be enabled by setting corresponding flags to true. Refer to debug options for further details. 
+//========================================================================================
 import React from 'react';
 import { StyleSheet, Text, View, FlatList} from 'react-native';
 import { Decks, newDeck } from "../utils/Decks"
@@ -11,7 +22,9 @@ import * as colors from "../utils/Colors"
 import * as Notifications from "../utils/Notifications"
 import * as decks from "../utils/Decks"
 
-
+//========================================================================================
+//Debug options
+//========================================================================================
 const showNotificationsGUI = false //this flag is used for debugging local notifications ; 
                                    //when it is set to TRUE application will show  extra buttons
                                    //they call notification- related functions directlty

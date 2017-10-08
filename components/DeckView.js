@@ -1,4 +1,13 @@
-//this component will display a particular deck 
+//=======================================================================================
+//Mobile flashcards: a mobile application built with React Native 
+//2017
+//Author:  developer2020 
+//e-mail:  dev276236@gmail.com
+//=======================================================================================
+
+//========================================================================================
+//This component displays a deck - specific view 
+//========================================================================================
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet, Animated } from 'react-native';
 import CommonButton from "./CommonButton"
@@ -24,7 +33,7 @@ export default class DeckView extends Component {
     this.props.navigation.navigate("MainView"); 
   }
   componentDidMount(){
-      //syncronize with local storage 
+      //syncronize with local storage; there may have been updates to the deck 
       const deck = this.props.navigation.state.params.deck
       let updateDeck = (updatedDeck)=>{
           this.setState({deck: updatedDeck})

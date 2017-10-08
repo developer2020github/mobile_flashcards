@@ -13,12 +13,12 @@ export const newDeck = {
             {
                 question: 'What is React?',
                 answer: 'A library for managing user interfaces',
-                isCorrect: true
+               
             },
             {
                 question: 'Where do you make Ajax requests in React?',
                 answer: 'The componentDidMount lifecycle event', 
-                isCorrect: true 
+               
             }
         ]
     
@@ -34,7 +34,7 @@ export const Decks = {
             {
                 question: 'What is a closure?',
                 answer: 'The combination of a function and the lexical environment', 
-                isCorrect: true
+               
             }
         ]
     }, 
@@ -45,7 +45,7 @@ export const Decks = {
             {
                 question: 'Is Python cool?',
                 answer: 'It is!', 
-                isCorrect: true
+               
             }
         ]
     }, 
@@ -56,7 +56,7 @@ export const Decks = {
             {
                 question: 'Is Java cool?',
                 answer: 'It is!', 
-                isCorrect: true
+               
             }
         ]
     }, 
@@ -67,7 +67,7 @@ export const Decks = {
             {
                 question: 'Is Beer cool?',
                 answer: 'It is!', 
-                isCorrect: true
+               
             }
         ]
     }

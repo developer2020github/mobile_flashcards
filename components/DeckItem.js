@@ -1,11 +1,22 @@
-//this file handles a deck item view for list of decks in the main view 
+//=======================================================================================
+//Mobile flashcards: a mobile application built with React Native 
+//2017
+//Author:  developer2020 
+//e-mail:  dev276236@gmail.com
+//=======================================================================================
+
+//========================================================================================
+//This module handles a deck item view for list of decks in the main view 
+//========================================================================================
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TouchableWithoutFeedback, Animated } from 'react-native';
 import * as colors from "../utils/Colors"
 
 export default class DeckItem extends React.Component {
 
+
   deckPressed = ()=>{
+        //on pressing a deck in the list should transition to detailed view of that deck 
         this.props.navigateToDeckView("DeckView", {deck: this.props.deck})
   }
 
@@ -29,6 +40,7 @@ export default class DeckItem extends React.Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
     deckItem: {
