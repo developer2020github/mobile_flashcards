@@ -46,6 +46,7 @@ export default class MainView extends React.Component {
   mainViewUpdate(){
       console.log("update main view!")
   }
+
   addNewDeckPress = () =>{
       this.props.navigation.navigate("NewDeckView"); 
   }
@@ -76,17 +77,21 @@ export default class MainView extends React.Component {
   }
 
   renderDeck = ({item}) =>{
-    return <DeckItem deck={item} navigateToDeckView={this.props.navigation.navigate} />
+    return <DeckItem deck={item} navigateToDeckView={this.props.navigation.navigate} updateMainListOfDecks={this.updateMainListOfDecks}/>
  }
 
-
- componentDidMount(){
+ updateMainListOfDecks = ()=>{
+    console.log("main view updateMainListOfDecks")
     const decksPromise = api.getAllDecks(); 
     decksPromise.then((results) => {
     const data = JSON.parse(results)
     this.setState({decks: data})
     
   })
+
+ }
+ componentDidMount(){
+    this.updateMainListOfDecks()
 
  }
  

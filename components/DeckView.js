@@ -26,20 +26,27 @@ export default class DeckView extends Component {
   }
 
   addNewCardPress = ()=>{
-    this.props.navigation.navigate("NewCardView", {deck: this.state.deck}); 
+    this.props.navigation.navigate("NewCardView", {deck: this.state.deck, 
+                                                   updateMainListOfDecks: this.props.navigation.state.params.updateMainListOfDecks, 
+                                                   updateParentDeck: this.updateDeck }); 
   }
 
   backToListOfDecksPress = ()=>{
     this.props.navigation.navigate("MainView"); 
   }
-  componentDidMount(){
-      //syncronize with local storage; there may have been updates to the deck 
-      const deck = this.props.navigation.state.params.deck
-      let updateDeck = (updatedDeck)=>{
-          this.setState({deck: updatedDeck})
-      }
 
-      api.getDeck(deck.title, updateDeck)
+  updateDeck=()=>{
+       //syncronize with local storage; there may have been updates to the deck 
+       const deck = this.props.navigation.state.params.deck
+       let updateDeck = (updatedDeck)=>{
+           this.setState({deck: updatedDeck})
+       }
+ 
+       api.getDeck(deck.title, updateDeck)
+  }
+
+  componentDidMount(){
+     this.updateDeck()    
   }
 
   render() {

@@ -48,7 +48,9 @@ export default class NewCardView extends Component {
 
      if (inputIsValid){
          api.addQuestion(deck.title, this.state.question, this.state.answer)
-         .then(()=>{Keyboard.dismiss()
+         .then(()=>{this.props.navigation.state.params.updateMainListOfDecks()
+                    this.props.navigation.state.params.updateParentDeck()
+                    Keyboard.dismiss()
                     this.props.navigation.navigate("DeckView",  {deck: deck})})
      }
 

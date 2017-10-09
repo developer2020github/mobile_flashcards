@@ -17,7 +17,8 @@ export default class DeckItem extends React.Component {
 
   deckPressed = ()=>{
         //on pressing a deck in the list should transition to detailed view of that deck 
-        this.props.navigateToDeckView("DeckView", {deck: this.props.deck})
+        this.props.navigateToDeckView("DeckView", {deck: this.props.deck, 
+                                                   updateMainListOfDecks: this.props.updateMainListOfDecks})
   }
 
 
