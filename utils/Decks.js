@@ -1,9 +1,18 @@
+
+//========================================================================================
+//Mobile flashcards: a mobile application built with React Native 
+//2017
+//Author:  developer2020 
+//e-mail:  dev276236@gmail.com
+//========================================================================================
+
+//========================================================================================
 //This file contains hard-coded definition of initial decks to be loaded,
 //for initial testing and development puproses
+//========================================================================================
 
 import * as api from "./api" 
 import * as lib from "./lib" 
-
 
 //sample new deck object to test interaction with async storage
 export const newDeck = {
@@ -73,8 +82,8 @@ export const Decks = {
     }
 }
 
-//this function will populate local storage on load to have it non-empty
-
+//this function will populate local storage with the hard coded list of decks 
+//defined above
 export function populateLocalStorage(){
    const listOfDecks = lib.listOfObjectsToArray(Decks)
    for (let deck of listOfDecks) {

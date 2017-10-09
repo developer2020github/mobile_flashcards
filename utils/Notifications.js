@@ -1,8 +1,17 @@
-//this module handles local notifications
+
+//========================================================================================
+//Mobile flashcards: a mobile application built with React Native 
+//2017
+//Author:  developer2020 
+//e-mail:  dev276236@gmail.com
+//========================================================================================
+
+//========================================================================================
+//Tthis module handles local notifications
 //refer to 
 //https://github.com/udacity/reactnd-UdaciFitness-complete/blob/8c4b20d9620970e475806bfe8f61308bc336b465/utils/helpers.js
-//as an expample used to build this functionality
-
+//(was used as an expample used to build this functionality)
+//========================================================================================
 import React from 'react'
 import { View, StyleSheet, AsyncStorage } from 'react-native'
 import { FontAwesome, MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons'

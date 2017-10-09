@@ -1,4 +1,15 @@
-//this file will handle interaction with local storage
+//========================================================================================
+//Mobile flashcards: a mobile application built with React Native 
+//2017
+//Author:  developer2020 
+//e-mail:  dev276236@gmail.com
+//========================================================================================
+
+//========================================================================================
+//This module handles interaction with the  AsyncStorage for the main data 
+//set of the application (decks of questions and answers)
+//========================================================================================
+
 import {AsyncStorage} from "react-native"
 
 export const MOBILE_FLASHCARDS_DESKS_STORAGE_KEY = "MOBILE_FLASHCARDS_DESKS_STORAGE_KEY"

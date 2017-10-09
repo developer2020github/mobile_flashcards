@@ -1,5 +1,5 @@
 //========================================================
-//
+//Mobile flashcards: a mobile application built with React Native 
 //2017
 //Author:  developer2020 
 //e-mail:  dev276236@gmail.com
