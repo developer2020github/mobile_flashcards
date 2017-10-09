@@ -1,4 +1,17 @@
-//this component will handle addition of a new card to a deck 
+//=======================================================================================
+//Mobile flashcards: a mobile application built with React Native 
+//2017
+//Author:  developer2020 
+//e-mail:  dev276236@gmail.com
+//=======================================================================================
+
+//========================================================================================
+//This component handles an addition of a new question card to a deck: 
+//user gets two text inputs; a basic input checks are performed (ensuring question 
+//and answer are not empty) before proceeding to submittion into the AsyncStorage.
+//If user is trying to submit an empty question or an empty answer - they will get 
+//a warning message displayed in red.   
+//========================================================================================
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native';
 import CommonButton from "./CommonButton"

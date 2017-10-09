@@ -1,4 +1,18 @@
-//this component will handle a view for addition of new deck. 
+//=======================================================================================
+//Mobile flashcards: a mobile application built with React Native 
+//2017
+//Author:  developer2020 
+//e-mail:  dev276236@gmail.com
+//=======================================================================================
+
+//========================================================================================
+//This component handles an addition of a new deck (set of questions/answers)
+//user gets one text input field to enter a title for new deck; 
+// basic input check is performed (ensuring title is not empty
+// before proceeding to submittion into the AsyncStorage.
+//If user is trying to submit an empty deck title - they will get 
+//a warning message displayed in red.
+//========================================================================================
 import React, { Component } from 'react';
 import { AppRegistry, TextInput, Text, View , StyleSheet, Keyboard } from 'react-native';
 import CommonButton from "./CommonButton"

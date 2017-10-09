@@ -1,5 +1,15 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+//=======================================================================================
+//Mobile flashcards: a mobile application built with React Native 
+//2017
+//Author:  developer2020 
+//e-mail:  dev276236@gmail.com
+//=======================================================================================
+
+//========================================================================================
+//This is the main component of the application 
+//========================================================================================
+import React from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 import MainView from './components/MainView'
 import NewDeckView from "./components/NewDeckView"
 import DeckView from "./components/DeckView"
@@ -14,6 +24,8 @@ function onTransitionStartFunction(){
    //console.log("transition started!")
 }
 
+//View-specific cofiguration settings for the application main navigator 
+//(stack navigator)
 const MainStackNavigatorRoutesConfig = {
     MainView: {
         screen: MainView, 
@@ -53,7 +65,8 @@ const MainStackNavigatorRoutesConfig = {
 }; 
 
 
-
+//Generic cofiguration settings for the application main navigator 
+//(stack navigator)
 const MainStackNavigatorConfig = {
     initialRouteName: "MainView", 
     navigationOptions: {

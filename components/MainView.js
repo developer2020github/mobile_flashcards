@@ -1,15 +1,16 @@
-//=======================================================================================
+//========================================================================================
 //Mobile flashcards: a mobile application built with React Native 
 //2017
 //Author:  developer2020 
 //e-mail:  dev276236@gmail.com
-//=======================================================================================
+//========================================================================================
 
 //========================================================================================
 //This component displays the main view of the application: list of 
 //decks to select from and a button to add new deck. 
 //There are also several optional buttons to help with debugging and testing; 
-//the can be enabled by setting corresponding flags to true. Refer to debug options for further details. 
+//the can be enabled by setting corresponding flags to true. Refer to debug options
+//for further details. 
 //========================================================================================
 import React from 'react';
 import { StyleSheet, Text, View, FlatList} from 'react-native';
@@ -22,17 +23,21 @@ import * as colors from "../utils/Colors"
 import * as Notifications from "../utils/Notifications"
 import * as decks from "../utils/Decks"
 
+
 //========================================================================================
 //Debug options
 //========================================================================================
-const showNotificationsGUI = false //this flag is used for debugging local notifications ; 
+const showNotificationsGUI = false //This flag is used for debugging local notifications ; 
                                    //when it is set to TRUE application will show  extra buttons
                                    //they call notification- related functions directlty
 
-const showStorageGUI = true      //this flag is used for showing buttons that directly control 
-                                 //local storage for testing/debugging purposes
-                                 //1. user can clear it 
-                                 //2. user can populate it with some hard-coded pre-defined decks 
+const showStorageGUI = true       //This flag is used for showing buttons that directly control 
+                                  //local storage for testing/debugging purposes
+                                  //1. user can clear it 
+                                  //2. user can populate it with some hard-coded pre-defined decks 
+
+
+
 export default class MainView extends React.Component {
   state = {
     decks : {}
