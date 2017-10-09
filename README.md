@@ -25,7 +25,7 @@ do any quiz on that day.
 
 ## Tested on
 * Physical Android device 
-* Android version: 
+* Android version: 6.0.1
 
 ### Installing the application and running it in development mode.
 0. Your Android device and computer need to be connected to the same network.
