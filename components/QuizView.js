@@ -90,9 +90,12 @@ export default class DeckView extends Component {
 
 
   incorrectPress = ()=>{
-   this.advanceQuestion()
+    this.advanceQuestion()
   }
 
+  backToListOfDecksPress = ()=>{
+    this.props.navigation.navigate("MainView"); 
+  }
   
   render() {
 
@@ -107,6 +110,7 @@ export default class DeckView extends Component {
       <Text style={styles.header}>{"You scored " + persentageOfCorrectAnswers + "%"}</Text>
       
       <CommonButton onPress={this.resetQuiz} text={"Reset quiz"} btnBackgroundColor={colors.BLUE1}/>
+      <CommonButton onPress={this.backToListOfDecksPress} text={"Back to list of decks"} btnBackgroundColor={colors.GRAY1}/>
     </View>
     }
 
